@@ -1,111 +1,231 @@
 # Comparador SAP vs WMS
 
 ## Descripción General
-El **Comparador SAP vs WMS** es una solución integral (Fullstack) diseñada para la conciliación y comparación de inventarios entre el sistema SAP y el sistema de gestión de almacenes (WMS).
 
-La aplicación permite cargar archivos Excel, normalizar los datos, ejecutar comparaciones precisas y visualizar las diferencias mediante un dashboard interactivo. Está dividida en un backend robusto para el procesamiento de archivos y un frontend intuitivo para la visualización y análisis de métricas.
+El **Comparador SAP vs WMS** es una solución Fullstack diseñada para la conciliación y comparación de inventarios entre SAP y WMS.
 
----
+La aplicación permite:
 
-## Características Principales
+- Cargar archivos Excel
+- Normalizar datos automáticamente
+- Comparar inventarios por código y lote
+- Visualizar diferencias mediante dashboards interactivos
+- Exportar resultados consolidados
 
-- **Comparación de Inventarios:** Análisis detallado de diferencias tanto por código de producto como por lote.
-- **Dashboard Interactivo:** Visualización de KPIs y métricas clave de conciliación.
-- **Procesamiento de Archivos:** Carga y lectura eficiente de archivos Excel (SAP y WMS).
-- **Normalización Automática:** Mapeo automático y filtros específicos para estructurar los datos antes de la comparación.
-- **Exportación de Resultados:** Descarga de tablas de comparación y resultados consolidados.
-- **Gestión de Almacenamiento Seguro:** Limpieza automática de archivos temporales en el servidor.
+El sistema está dividido en:
 
----
-
-## Tecnologías Utilizadas
-
-| Entorno   | Tecnología                     | Uso Principal |
-|------------|--------------------------------|---------------|
-| Frontend   | React 18+ & Vite               | Interfaz de usuario y renderizado rápido |
-| Frontend   | JavaScript (ES6+) & CSS Modular| Lógica de cliente y estilos aislados |
-| Frontend   | Context API                    | Gestión del estado global de las comparaciones |
-| Backend    | Node.js & Express.js           | Servidor, enrutamiento y API REST |
-| Backend    | Multer                         | Gestión y carga de archivos temporales (Excel) |
-| Backend    | xlsx                           | Lectura y parsing de hojas de cálculo |
+- **Backend:** procesamiento de archivos y lógica de comparación
+- **Frontend:** visualización, métricas y gestión de resultados
 
 ---
 
-## Estructura del Proyecto
+# Características Principales
 
-El proyecto está dividido en dos directorios principales: `/frontend` y `/backend`.
+- Comparación detallada de inventarios SAP vs WMS
+- Dashboard interactivo con KPIs
+- Procesamiento de archivos Excel
+- Normalización automática de datos
+- Exportación de resultados
+- Limpieza automática de archivos temporales
+
+---
+
+# Tecnologías Utilizadas
+
+| Entorno | Tecnología | Uso |
+|---|---|---|
+| Frontend | React 18 + Vite | Interfaz y renderizado rápido |
+| Frontend | JavaScript ES6+ | Lógica del cliente |
+| Frontend | CSS Modular | Estilos organizados |
+| Frontend | Context API | Estado global |
+| Backend | Node.js + Express | API REST |
+| Backend | Multer | Carga de archivos |
+| Backend | xlsx | Lectura de Excel |
+
+---
+
+# Estructura del Proyecto
 
 ```text
 comparador-sap-wms/
 │
-├── backend/                  # API y lógica de procesamiento
-│   ├── controllers/          # Controladores (ej. compare.controller.js)
-│   ├── routes/               # Rutas de la API (ej. /api/compare)
-│   ├── services/             # Lógica de negocio (autoMap, normalize, readExcel, etc.)
-│   ├── utils/                # Utilidades generales (cleanUploads.js)
-│   ├── uploads/              # Archivos temporales Excel
-│   └── server.js             # Punto de entrada del backend
+├── backend/
+│   ├── controllers/          # Controladores
+│   ├── routes/               # Rutas API
+│   ├── services/             # Lógica de negocio
+│   ├── utils/                # Utilidades
+│   ├── uploads/              # Archivos temporales
+│   └── server.js             # Inicio backend
 │
-└── frontend/                 # Interfaz de usuario (React + Vite)
+└── frontend/
     ├── src/
-    │   ├── app/              # Punto de entrada de la app
-    │   ├── assets/           # Imágenes y recursos estáticos
-    │   ├── layouts/         # Layout principal
-    │   ├── modules/         # Módulos (comparison, dashboard, context)
-    │   ├── routes/          # Rutas de navegación
-    │   ├── services/        # Consumo de API (httpClient)
-    │   └── shared/          # Componentes reutilizables
-    └── main.jsx              # Bootstrap de React
+    │   ├── app/              # App principal
+    │   ├── assets/           # Recursos estáticos
+    │   ├── layouts/          # Layouts
+    │   ├── modules/          # Módulos funcionales
+    │   ├── routes/           # Navegación
+    │   ├── services/         # API y servicios
+    │   └── shared/           # Componentes reutilizables
+    │
+    └── main.jsx              # Bootstrap React
+```
 
-## Instalación y Ejecución
-# Requisitos Previos
+---
 
-* Node.js (v16 o superior)
-* npm o yarn
+# Instalación y Ejecución
 
-## 1. Backend
+## Requisitos Previos
 
+- Node.js v16 o superior
+- npm o yarn
+
+---
+
+# Backend
+
+## Instalar dependencias
+
+```bash
 cd backend
 npm install
+```
 
-Configurar .env:
+## Configurar variables de entorno
 
+Crear archivo `.env`
+
+```env
 PORT=3001
+```
 
-Ejecutar:
+## Ejecutar servidor
 
-# desarrollo
+### Desarrollo
+
+```bash
 npm run dev
+```
 
-# producción
+### Producción
+
+```bash
 node server.js
+```
 
-## 2. Frontend
+---
 
+# Frontend
+
+## Instalar dependencias
+
+```bash
 cd frontend
 npm install
+```
 
-Ejecutar:
+## Ejecutar proyecto
 
+```bash
 npm run dev
+```
 
-Build producción:
+## Build producción
 
+```bash
 npm run build
 npm run preview
+```
 
-## Flujo de la Aplicación y API
+---
 
-1. Carga: el usuario sube archivos desde el frontend.
-2. Petición API: POST /api/compare con archivos SAP y WMS.
-3. Procesamiento: backend normaliza y compara datos.
-4. Respuesta: devuelve diferencias consolidadas.
-5. Visualización: dashboard con KPIs y tablas.
-6. Exportación: descarga de resultados desde frontend.
+# Flujo de la Aplicación
 
-## Notas de Mantenimiento y Despliegue
+```text
+Frontend
+   │
+   ├── Carga archivos SAP y WMS
+   │
+   ▼
+Backend API
+   │
+   ├── Lectura Excel
+   ├── Normalización
+   ├── Comparación
+   │
+   ▼
+Resultados Consolidados
+   │
+   ├── KPIs
+   ├── Tablas
+   ├── Diferencias
+   │
+   ▼
+Exportación
+```
 
-* Conexión Frontend-Backend: configurada en frontend/src/services/httpClient.js.
-* Limpieza automática: utils/cleanUploads.js elimina archivos temporales cada 30 minutos.
-* Privacidad: los archivos en /uploads son temporales y no se almacenan permanentemente.
-* Despliegue: backend compatible con servicios como Render o similares.
+---
+
+# API Principal
+
+## Comparar Inventarios
+
+```http
+POST /api/compare
+```
+
+### Función
+
+- Recibe archivos SAP y WMS
+- Normaliza datos
+- Ejecuta comparación
+- Devuelve diferencias consolidadas
+
+---
+
+# Notas de Mantenimiento
+
+## Conexión Frontend - Backend
+
+Configuración ubicada en:
+
+```text
+frontend/src/services/httpClient.js
+```
+
+---
+
+## Limpieza Automática
+
+El sistema elimina archivos temporales automáticamente mediante:
+
+```text
+utils/cleanUploads.js
+```
+
+- Frecuencia: cada 30 minutos
+- Elimina archivos antiguos temporales
+
+---
+
+## Privacidad
+
+- Los archivos en `/uploads` son temporales
+- No se almacena información sensible permanentemente
+
+---
+
+# Despliegue
+
+El proyecto es compatible con plataformas como:
+
+- Render
+- Railway
+- VPS Linux
+- Docker
+- Vercel (Frontend)
+
+---
+
+# Autor
+
+Proyecto desarrollado para conciliación y análisis de inventarios SAP vs WMS.
