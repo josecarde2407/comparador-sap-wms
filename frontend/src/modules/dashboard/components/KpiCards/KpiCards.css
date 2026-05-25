@@ -1,0 +1,179 @@
+/* KpiCards.css */
+.kpi-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.kpi-card {
+  position: relative;
+  padding: 22px;
+  border-radius: 16px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  backdrop-filter: blur(12px);
+}
+
+/* Hover */
+.kpi-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Glow background */
+.kpi-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* =========================
+   VARIANTES
+========================= */
+
+.kpi-primary {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 70, 229, 0.18),
+    rgba(35, 30, 88, 0.08)
+  );
+}
+
+.kpi-primary:hover {
+  box-shadow: 0 10px 30px rgba(5, 2, 68, 0.25);
+}
+
+.kpi-success {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.18),
+    rgba(5, 150, 105, 0.08)
+  );
+}
+
+.kpi-success:hover {
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.22);
+}
+
+.kpi-warning {
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.18),
+    rgba(217, 119, 6, 0.08)
+  );
+}
+
+.kpi-warning:hover {
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.22);
+}
+
+.kpi-info {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.18),
+    rgba(2, 132, 199, 0.08)
+  );
+}
+
+.kpi-info:hover {
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.22);
+}
+
+.kpi-danger {
+  background: linear-gradient(
+    135deg,
+    rgba(239, 68, 68, 0.18),
+    rgba(185, 28, 28, 0.08)
+  );
+}
+
+.kpi-danger:hover {
+  box-shadow: 0 10px 30px rgba(239, 68, 68, 0.22);
+}
+
+/* =========================
+   ICONO
+========================= */
+
+.kpi-icon {
+  font-size: 34px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.kpi-content {
+  flex: 1;
+  z-index: 1;
+}
+
+.kpi-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+
+  color: #94a3b8;
+}
+
+.kpi-value {
+  margin-top: 8px;
+
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+
+  color: #0f0338;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kpi-card {
+  animation: slideInUp 0.35s ease;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .kpi-container {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-card {
+    padding: 18px;
+  }
+
+  .kpi-value {
+    font-size: 28px;
+  }
+}

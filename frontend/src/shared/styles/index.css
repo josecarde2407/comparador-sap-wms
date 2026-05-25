@@ -1,0 +1,53 @@
+/*INDEX.CSS*/
+:root {
+  --text: #2c3e50;
+  --text-h: #1a252f;
+  --bg: #f5f7fa;
+  --border: #d5dbdb;
+  --accent: #5b63b5;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--text);
+  background: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; 
+}
+
+/* IMPORTANTE */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #f5f7fa;
+}
+
+/* TITLES */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
