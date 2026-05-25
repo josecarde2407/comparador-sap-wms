@@ -11,12 +11,6 @@
 
 ---
 
-<p align="center">
-  <img src="./docs/banner.png" alt="banner" width="100%">
-</p>
-
----
-
 # 🚀 Descripción
 
 Sistema Fullstack para conciliación y comparación de inventarios entre SAP y WMS mediante carga de archivos Excel.
